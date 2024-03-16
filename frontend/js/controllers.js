@@ -1080,6 +1080,7 @@ angular.module('elixir_front.controllers', [])
 			$scope.validationProgress.inProgress = true;
 			$scope.validationProgress.success = false;
 			$scope.validationProgress.error = false;
+			$scope.registrationErrorPayload = null;
 		
 			ToolUpdateValidator.update($stateParams, $scope.software, function(response) {
 				ToolUpdateLinterValidator.update($stateParams, $scope.software, function(linterResponse) {
