@@ -1064,7 +1064,7 @@ angular.module('elixir_front.controllers', [])
 
 
 }])
-.controller('ToolUpdateController', ['$scope', '$controller','$timeout','$state', '$stateParams', 'Tool', 'ToolUpdateValidator', 'Covid', 'CommunityCollection', function($scope, $controller, $timeout, $state, $stateParams, Tool, ToolUpdateValidator, Covid, CommunityCollection) {
+.controller('ToolUpdateController', ['$scope', '$controller','$timeout','$state', '$stateParams', 'Tool', 'ToolUpdateLinterValidator', 'ToolUpdateValidator', 'Covid', 'CommunityCollection', '$q', function($scope, $controller, $timeout, $state, $stateParams, Tool, ToolUpdateLinterValidator, ToolUpdateValidator, Covid, CommunityCollection, $q) {
 	// inherit common controller
 	$controller('ToolEditController', {$scope: $scope});
 
@@ -1077,9 +1077,32 @@ angular.module('elixir_front.controllers', [])
 	$scope.CommunityCollection = CommunityCollection;
 	$scope.validateButtonClick = function() {
 		$timeout(function() {
-			$scope.sendResource(ToolUpdateValidator.update, $scope.validationProgress, false, 'update-validate');
-		},100);
-	}
+			$scope.validationProgress.inProgress = true;
+			$scope.validationProgress.success = false;
+			$scope.validationProgress.error = false;
+		
+			ToolUpdateValidator.update($stateParams, $scope.software, function(response) {
+				ToolUpdateLinterValidator.update($stateParams, $scope.software, function(linterResponse) {
+					$scope.validationProgress.inProgress = false;
+					$scope.validationProgress.success = true;
+				}, function(linterError) {
+					// Ignore 500 errors from the linter
+					if (linterError.status === 500) {
+						$scope.validationProgress.inProgress = false;
+						$scope.validationProgress.success = true;
+						return
+					}
+					$scope.validationProgress.error = true;
+					$scope.validationProgress.inProgress = false;
+					$scope.registrationErrorPayload = linterError.data;
+				});
+			}, function(validatorError) {
+				$scope.validationProgress.error = true;
+				$scope.validationProgress.inProgress = false;
+				$scope.registrationErrorPayload = validatorError.data;
+			});
+		}, 100);
+	};
 
 	$scope.registerButtonClick = function() {
 		$timeout(function() {
