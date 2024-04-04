@@ -336,7 +336,7 @@ angular.module('elixir_front.services', [])
 	})
 }])
 .factory('ToolUpdateLinterValidator', ['$resource', function($resource){
-	return $resource('http://localhost:3000/api/json?biotools_format=true', null, {
+	return $resource('https://biotools-linter.biodata.ceitec.cz/api/json?biotools_format=true', null, {
 		'update': {
 			method:'POST'
 		}
