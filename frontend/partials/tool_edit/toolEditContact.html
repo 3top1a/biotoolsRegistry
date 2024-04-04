@@ -14,7 +14,7 @@
 									<label class="col-sm-3 control-label" style="position: relative;"><span>Email</span><span style="color:#ff0000;position: absolute; right: 5px;"><b>*</b></span></label>
 									<div class="col-sm-9">
 										<input ng-model="software.contact[$index].email" type="text" class="form-control" placeholder="Email" name="email" validate-edit-resource-field index={{$index}}>
-										<label class="help-block" ng-repeat="error in contactForm.email.errorMessages" bo-text="error"></label>
+										<label class="help-block" ng-repeat="error in contactForm.email.errorMessages" ng-bind-html="error"></label>
 									</div>
 								</div>
 								<!-- 'Or' divider -->
@@ -26,7 +26,7 @@
 									<label class="col-sm-3 control-label" style="position: relative;"><span>URL</span><span style="color:#ff0000;position: absolute; right: 5px;"><b>*</b></span></label>
 									<div class="col-sm-9">
 										<input ng-model="software.contact[$index].url" type="text" class="form-control" placeholder="URL of contact" name="url" validate-edit-resource-field index={{$index}}>
-										<label class="help-block" ng-repeat="error in contactForm.url.errorMessages" bo-text="error"></label>
+										<label class="help-block" ng-repeat="error in contactForm.url.errorMessages" ng-bind-html="error"></label>
 									</div>
 								</div>
 							</div>
@@ -35,7 +35,7 @@
 								<label class="col-sm-3 control-label" style="position: relative;"><span>Name</span></label>
 								<div class="col-sm-9">
 									<input ng-model="software.contact[$index].name" type="text" class="form-control" placeholder="Name" name="name" validate-edit-resource-field index={{$index}}>
-									<label class="help-block" ng-repeat="error in contactForm.name.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in contactForm.name.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 							<!-- Phone -->
@@ -43,12 +43,12 @@
 								<label class="col-sm-3 control-label" style="position: relative;"><span>Telephone number</span></label>
 								<div class="col-sm-9">
 									<input ng-model="software.contact[$index].tel" type="text" class="form-control" placeholder="Telephone number" name="phone" validate-edit-resource-field index={{$index}}>
-									<label class="help-block" ng-repeat="error in contactForm.phone.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in contactForm.phone.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 						</div>
 						<div ng-class="{'has-error': true};">
-							<label class="help-block" style="margin-left: 20px;" ng-repeat="error in contactForm.errorMessages" bo-text="error"></label>
+							<label class="help-block" style="margin-left: 20px;" ng-repeat="error in contactForm.errorMessages" ng-bind-html="error"></label>
 						</div>
 					</ng-form>
 				</div>

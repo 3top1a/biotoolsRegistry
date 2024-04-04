@@ -39,10 +39,10 @@
 									<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('toolType', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 								</span>
 							</div>
-							<label class="help-block" ng-repeat="error in resourceTypeForm.toolType.errorMessages" bo-text="error"></label>
+							<label class="help-block" ng-repeat="error in resourceTypeForm.toolType.errorMessages" ng-bind-html="error"></label>
 						</ng-form>
 					</div>
-					<label class="help-block" ng-if="isString(error)" ng-repeat="error in registrationErrorPayload.toolType" bo-text="error"></label>
+					<label class="help-block" ng-if="isString(error)" ng-repeat="error in registrationErrorPayload.toolType" ng-bind-html="error"></label>
 					<div class="form-group" style="padding-top:7px;">
 						<a href="" ng-click="addButtonClick('toolType', software, true, false);">Add Tool type</a>
 					</div>
@@ -82,9 +82,9 @@
 								<button type="button" class="btn btn-default btn-xs btn-block btn-ontology" ng-class="{'btn-ontology-closed': meta.topic[topicIndex].visibility}" ng-click="meta.topic[topicIndex].visibility = !meta.topic[topicIndex].visibility"><i class="fa" ng-class="{'fa-chevron-up':!meta.topic[topicIndex].visibility, 'fa-chevron-down':meta.topic[topicIndex].visibility}"></i></button>
 							</div>
 						</div>
-						<label class="help-block" ng-repeat="error in form.topicForm.topic.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.topicForm.topic.errorMessages" ng-bind-html="error"></label>
 						<div ng-class="{'has-error': true};">
-							<label class="help-block" ng-repeat="error in registrationErrorPayload.topic[$index]" bo-text="error"></label>
+							<label class="help-block" ng-repeat="error in registrationErrorPayload.topic[$index]" ng-bind-html="error"></label>
 						</div>
 					</div>
 					<div class="form-group" style="padding-top:7px;">
@@ -105,7 +105,7 @@
 										<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('operatingSystem', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 									</span>
 								</div>
-								<label class="help-block" ng-repeat="error in platformForm.operatingSystem.errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in platformForm.operatingSystem.errorMessages" ng-bind-html="error"></label>
 							</ng-form>
 						</div>
 						<div class="form-group" style="padding-top:7px;">
@@ -126,7 +126,7 @@
 										<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('language', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 									</span>
 								</div>
-								<label class="help-block" ng-repeat="error in languageForm.language.errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in languageForm.language.errorMessages" ng-bind-html="error"></label>
 							</ng-form>
 						</div>
 						<div class="form-group" style="padding-top:7px;">
@@ -140,7 +140,7 @@
 					<div class="col-sm-9">
 						<select class="form-control select-btn-group" ng-options="item.value as item.text for item in maturityOptions" name="maturity" ng-model="software.maturity" validate-edit-resource-field>
 						</select>
-						<label class="help-block" ng-repeat="error in form.labelForm.maturity.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.labelForm.maturity.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</div>
 				<!-- License  -->
@@ -149,7 +149,7 @@
 					<div class="col-sm-9">
 						<select class="form-control select-btn-group" ng-options="item.value as item.text for item in licenseOptions" ng-model="software.license" name="license" validate-edit-resource-field>
 						</select>
-						<label class="help-block" ng-repeat="error in form.labelForm.license.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.labelForm.license.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</div>
 				<!-- Cost -->
@@ -158,7 +158,7 @@
 					<div class="col-sm-9">
 						<select class="form-control select-btn-group" ng-options="item.value as item.text for item in costOptions" ng-model="software.cost" name="cost" validate-edit-resource-field>
 						</select>
-						<label class="help-block" ng-repeat="error in form.labelForm.cost.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.labelForm.cost.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</div>
 				<!-- Collection -->
@@ -175,7 +175,7 @@
 									<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('collectionID', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 								</span>
 							</div>
-							<label class="help-block" ng-repeat="error in collectionForm.collection.errorMessages" bo-text="error"></label>
+							<label class="help-block" ng-repeat="error in collectionForm.collection.errorMessages" ng-bind-html="error"></label>
 						</ng-form>
 					</div>
 					<div class="form-group" style="padding-top:7px;">
@@ -188,7 +188,7 @@
 					<div class="col-sm-9">
 						<select class="form-control select-btn-group" ng-options="item.value as item.text for item in accessibilityOptions" ng-model="software.accessibility" name="accessibility" validate-edit-resource-field>
 						</select>
-						<label class="help-block" ng-repeat="error in form.labelForm.accessibility.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.labelForm.accessibility.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</div>
 				<!-- Elixir Platform -->
@@ -205,7 +205,7 @@
 										<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('elixirPlatform', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 									</span>
 								</div>
-								<label class="help-block" ng-repeat="error in elixirPlatformForm.elixirPlatform.errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in elixirPlatformForm.elixirPlatform.errorMessages" ng-bind-html="error"></label>
 							</ng-form>
 						</div>
 						<div class="form-group" style="padding-top:7px;">
@@ -227,7 +227,7 @@
 										<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('elixirNode', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 									</span>
 								</div>
-								<label class="help-block" ng-repeat="error in elixirNodeForm.elixirNode.errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in elixirNodeForm.elixirNode.errorMessages" ng-bind-html="error"></label>
 							</ng-form>
 						</div>
 						<div class="form-group" style="padding-top:7px;">
@@ -249,7 +249,7 @@
 										<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('elixirCommunity', software, $index)"><i class="fa fa-times remove-icon-button"></i> </button>
 									</span>
 								</div>
-								<label class="help-block" ng-repeat="error in elixirCommunityForm.elixirCommunity.errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in elixirCommunityForm.elixirCommunity.errorMessages" ng-bind-html="error"></label>
 							</ng-form>
 						</div>
 						<div class="form-group" style="padding-top:7px;">
@@ -263,7 +263,7 @@
 					<div class="col-sm-9">
 						<select class="form-control select-btn-group" ng-options="item.value as item.text for item in confidenceOptions" ng-model="software.confidence_flag" name="confidence" validate-edit-resource-field>
 						</select>
-						<label class="help-block" ng-repeat="error in form.labelForm.confidence.errorMessages" bo-text="error"></label>
+						<label class="help-block" ng-repeat="error in form.labelForm.confidence.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</div>
 				<!-- Other id -->
@@ -282,7 +282,7 @@
 												<label class="col-sm-3 control-label" style="position: relative;"><span tooltips tooltip-side="right" tooltip-content="{{Attribute.description.otherIDValue.description}}">Value <a target="_blank" href="https://biotools.readthedocs.io/en/latest/curators_guide.html#value"><i class="fa fa-question-circle fa" aria-hidden="true"></i></a></span></label>
 												<div class="col-sm-9">
 													<input ng-model="software.otherID[$index].value" type="text" class="form-control" name="value" validate-edit-resource-field index={{$index}}>
-													<label class="help-block" ng-repeat="error in otherIdDetailForm.value.errorMessages" bo-text="error"></label>
+													<label class="help-block" ng-repeat="error in otherIdDetailForm.value.errorMessages" ng-bind-html="error"></label>
 												</div>
 											</div>
 											<!-- Other ID type -->
@@ -292,7 +292,7 @@
 												<div class="col-sm-9">
 													<select class="form-control select-btn-group" ng-options="item.value as item.text for item in otherIdTypeOptions" ng-model="software.otherID[$index].type" name="type" validate-edit-resource-field index={{$index}}>
 													</select>
-													<label class="help-block" ng-repeat="error in otherIdDetailForm.type.errorMessages" bo-text="error"></label>
+													<label class="help-block" ng-repeat="error in otherIdDetailForm.type.errorMessages" ng-bind-html="error"></label>
 												</div>
 											</div>
 											<!-- Version -->
@@ -300,13 +300,13 @@
 												<label class="col-sm-3 control-label" style="position: relative;"><span tooltips tooltip-side="right" tooltip-content="{{Attribute.description.otherIDVersion.description}}">Version <a target="_blank" href="https://biotools.readthedocs.io/en/latest/curators_guide.html#version-otherid"><i class="fa fa-question-circle fa" aria-hidden="true"></i></a></span></label>
 												<div class="col-sm-9">
 													<input ng-model="software.otherID[$index].version" type="text" class="form-control" name="version" validate-edit-resource-field index={{$index}}>
-													<label class="help-block" ng-repeat="error in otherIdDetailForm.version.errorMessages" bo-text="error"></label>
+													<label class="help-block" ng-repeat="error in otherIdDetailForm.version.errorMessages" ng-bind-html="error"></label>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div ng-class="{'has-error': true};">
-										<label class="help-block" style="margin-left: 20px;" ng-repeat="error in otherIdForm.errorMessages" bo-text="error"></label>
+										<label class="help-block" style="margin-left: 20px;" ng-repeat="error in otherIdForm.errorMessages" ng-bind-html="error"></label>
 									</div>
 								</ng-form>
 							</div>

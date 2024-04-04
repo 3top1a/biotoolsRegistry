@@ -47,11 +47,11 @@
 									</div>
 								</div>
 								<div ng-class="{'has-error': true};">
-									<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].operation[functionNameIndex]" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].operation[functionNameIndex]" ng-bind-html="error"></label>
 								</div>
 							</div>
 							<div ng-class="{'has-error': true};" ng-show="registrationErrorPayload.function[functionIndex].operation[0]=='This field is required.'">
-									<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].operation" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].operation" ng-bind-html="error"></label>
 								</div>
 						</div>
 						
@@ -95,7 +95,7 @@
 											</div>
 										</div>
 										<div ng-class="{'has-error': true};">
-											<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].input[inputIndex].data" bo-text="error"></label>
+											<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].input[inputIndex].data" ng-bind-html="error"></label>
 										</div>
 										<div class="form-group" style="padding-top:7px;">
 											<a href="" ng-show="input.data == null" ng-click="addButtonClick('data', input, false, true)">Add data type</a>
@@ -129,7 +129,7 @@
 													</div>
 												</div>
 												<div ng-class="{'has-error': true};">
-													<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].input[inputIndex].format[dataFormatIndex]" bo-text="error"></label>
+													<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].input[inputIndex].format[dataFormatIndex]" ng-bind-html="error"></label>
 												</div>
 											</div>
 										</div>
@@ -180,7 +180,7 @@
 											</div>
 										</div>
 										<div ng-class="{'has-error': true};">
-											<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].output[outputIndex].data" bo-text="error"></label>
+											<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].output[outputIndex].data" ng-bind-html="error"></label>
 										</div>
 										<div class="form-group" style="padding-top:7px;">
 											<a href="" ng-show="output.data == null" ng-click="addButtonClick('data', output, false, true)">Add data type</a>
@@ -214,7 +214,7 @@
 													</div>
 												</div>
 												<div ng-class="{'has-error': true};">
-													<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].output[outputIndex].format[dataFormatIndex]" bo-text="error"></label>
+													<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].output[outputIndex].format[dataFormatIndex]" ng-bind-html="error"></label>
 												</div>
 											</div>
 										</div>
@@ -235,7 +235,7 @@
 							<textarea ng-model="software.function[$index].cmd" class="form-control" rows="2" placeholder="e.g. `meme sequence.s -dna`" validate-edit-resource-field index={{$index}}></textarea>
 						</div>
 						<div ng-class="{'has-error': true};">
-							<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].cmd" bo-text="error"></label>
+							<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].cmd" ng-bind-html="error"></label>
 						</div>
 						<!-- Function Note -->
 						<div class="form-group">
@@ -243,7 +243,7 @@
 							<textarea ng-model="software.function[$index].note" class="form-control" rows="2" placeholder="e.g. Run MEME on DNA sequences." validate-edit-resource-field index={{$index}}></textarea>
 						</div>
 						<div ng-class="{'has-error': true};">
-							<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].note" bo-text="error"></label>
+							<label class="help-block" ng-repeat="error in registrationErrorPayload.function[functionIndex].note" ng-bind-html="error"></label>
 						</div>
 					</div>
 				</div>

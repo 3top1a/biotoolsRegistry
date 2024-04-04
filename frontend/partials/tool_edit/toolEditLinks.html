@@ -20,7 +20,7 @@
 								</label>
 								<div class="col-sm-9">
 									<input ng-model="software.link[$index].url" type="text" class="form-control" placeholder="URL" name="url" validate-edit-resource-field index={{$index}}>
-									<label class="help-block" ng-repeat="error in linkDetailForm.url.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in linkDetailForm.url.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 
@@ -41,15 +41,15 @@
 													<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('type', software.link[entryIndex], typeIndex)"><i class="fa fa-times remove-icon-button"></i> </button>
 												</span>
 											</div>
-											<label class="help-block" ng-repeat="error in registrationErrorPayload.link[entryIndex].type[typeIndex]" bo-text="error"></label>
+											<label class="help-block" ng-repeat="error in registrationErrorPayload.link[entryIndex].type[typeIndex]" ng-bind-html="error"></label>
 									</div>
-									<label class="help-block" ng-repeat="error in linkDetailForm.link[entryIndex]" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in linkDetailForm.link[entryIndex]" ng-bind-html="error"></label>
 									
 									<div class="form-group" style="padding-top:7px;">
 										<a href="" ng-click="addButtonClick('type', software.link[entryIndex], true, false);">Add link type</a>
 									</div>
 									<div ng-class="{'has-error': true};" ng-show="registrationErrorPayload.link[entryIndex].type[0]=='This field is required.'">
-										<label class="help-block" ng-repeat="error in registrationErrorPayload.link[entryIndex].type" bo-text="error"></label>
+										<label class="help-block" ng-repeat="error in registrationErrorPayload.link[entryIndex].type" ng-bind-html="error"></label>
 									</div>
 	
 								</div>
@@ -60,13 +60,13 @@
 								<label class="col-sm-3 control-label"><span tooltips tooltip-side="right" tooltip-content="{{Attribute.description.linkNote.description}}">Note <a target="_blank" href="http://biotools.readthedocs.io/en/latest/curators_guide.html#note-link"><i class="fa fa-question-circle fa" aria-hidden="true"></i></a></span></label>
 								<div class="col-sm-9">
 									<textarea ng-model="software.link[$index].note" name="note" class="form-control" rows="3" placeholder="Comment about the link" validate-edit-resource-field index={{$index}}></textarea>
-									<label class="help-block" ng-repeat="error in linkDetailForm.note.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in linkDetailForm.note.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div ng-class="{'has-error': true};">
-						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in linksForm.errorMessages" bo-text="error"></label>
+						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in linksForm.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</ng-form>
 			</div>

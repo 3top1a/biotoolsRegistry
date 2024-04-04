@@ -22,9 +22,9 @@
 								<div class="col-sm-9">
 									<select class="form-control select-btn-group" ng-options="item.value as item.text for item in relationTypeOptions" ng-model="software.relation[$index].type" name="type" validate-edit-resource-field index={{$index}}>
 									</select>
-									<label class="help-block" ng-repeat="error in relationsDetailForm.type.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in relationsDetailForm.type.errorMessages" ng-bind-html="error"></label>
 								</div>
-								<label class="help-block" ng-repeat="error in relationsDetailForm.relation[$index].errorMessages" bo-text="error"></label>
+								<label class="help-block" ng-repeat="error in relationsDetailForm.relation[$index].errorMessages" ng-bind-html="error"></label>
 							</div>
 
 							<!-- biotoolsID -->
@@ -35,14 +35,14 @@
 								<div class="col-sm-9 autocomplete-container">
 									<input ng-model="software.relation[$index].biotoolsID" type="text" class="form-control" placeholder="biotoolsID" name="biotoolsID" validate-edit-resource-field index={{$index}}
 									typeahead="biotoolsID for biotoolsID in loadBiotoolsIDs($viewValue)" typeahead-min-length="2">
-									<label class="help-block" ng-repeat="error in relationsDetailForm.biotoolsID.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in relationsDetailForm.biotoolsID.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>							
 
 						</div>
 					</div>
 					<div ng-class="{'has-error': true};">
-						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in relationsForm.errorMessages" bo-text="error"></label>
+						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in relationsForm.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</ng-form>
 			</div>

@@ -92,7 +92,7 @@
                                 </label>
 								<div class="col-sm-9">
 									<input ng-model="software.community.biolib.app_name" type="text" class="form-control" placeholder="e.g. samtools-stats" name="biolib_app_name" validate-edit-resource-field>
-									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_app_name.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_app_name.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
                         </div>
@@ -106,7 +106,7 @@
                                 </label>
 								<div class="col-sm-9">
 									<input ng-model="software.community.biolib.author_username" type="text" class="form-control" placeholder="Valid BioLib username" name="biolib_author_username" validate-edit-resource-field>
-									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_author_username.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_author_username.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
                         </div>
@@ -119,7 +119,7 @@
                                 </label>
 								<div class="col-sm-9">
 									<input ng-model="software.community.biolib.author_name" type="text" class="form-control" placeholder="Author display name" name="biolib_author_name" validate-edit-resource-field>
-									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_author_name.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in communityDetailForm.biolib_author_name.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
                         </div>
@@ -127,7 +127,7 @@
                     </div>
                     <div ng-class="{'has-error': true};">
                         <label class="help-block" style="margin-left: 20px;"
-                            ng-repeat="error in communityDetailForm.errorMessages" bo-text="error"></label>
+                            ng-repeat="error in communityDetailForm.errorMessages" ng-bind-html="error"></label>
                     </div>
                 </ng-form>
             </div>

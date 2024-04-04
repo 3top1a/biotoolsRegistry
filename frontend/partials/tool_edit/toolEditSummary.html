@@ -24,7 +24,7 @@
 						ng-change="biotoolsIDDisabled ? makeIdURLSafe(software.name) : null;" type="text"
 						class="form-control" placeholder="Tool name" validate-edit-resource-field>
 					<label class="help-block" ng-repeat="error in form.summaryForm.name.errorMessages"
-						bo-text="error"></label>
+						ng-bind-html="error"></label>
 				</div>
 			</div>
 
@@ -50,7 +50,7 @@
 					</div>
 					
 					<label class="help-block" ng-repeat="error in form.summaryForm.biotoolsID.errorMessages"
-						bo-text="error"></label>
+						ng-bind-html="error"></label>
 					<a class="edit-link" href="">Edit</a>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 							</button>
 						</span>
 					</div>
-					<label class="help-block" ng-repeat="error in form.summaryForm.identifier.errorMessages" bo-text="error"></label>
+					<label class="help-block" ng-repeat="error in form.summaryForm.identifier.errorMessages" ng-bind-html="error"></label>
 					<label ng-show="!registrationErrorPayload.id" class="help-block">Unique identifier of the resource - <a href="" tooltips tooltip-side="bottom" tooltip-content="ID is used in the URL. Once set it can not be changed." tooltip-show-trigger="mousedown" tooltip-hide-trigger="mousedown">more info</a></label>
 				</div>
 			</div> -->
@@ -82,10 +82,10 @@
 				<div class="col-sm-9">
 					<select class="form-control select-btn-group" ng-options="item.value as item.text for item in latestOptions" ng-model="software.latest" name="latest" validate-edit-resource-field>
 					</select>
-					<label class="help-block" ng-repeat="error in form.summaryForm.latest.errorMessages" bo-text="error"></label>
+					<label class="help-block" ng-repeat="error in form.summaryForm.latest.errorMessages" ng-bind-html="error"></label>
 					<label class="help-block">Is this the latest version?</label>
 				</div>
-				<label class="help-block" ng-repeat="error in form.supplementaryForm.latest.errorMessages" bo-text="error"></label>
+				<label class="help-block" ng-repeat="error in form.supplementaryForm.latest.errorMessages" ng-bind-html="error"></label>
 			</div> -->
 
 			<!-- 	Description	 -->
@@ -101,7 +101,7 @@
 					<textarea ng-model="software.description" name="description" class="form-control" rows="3"
 						placeholder="Tool description" validate-edit-resource-field></textarea>
 					<label class="help-block" ng-repeat="error in form.summaryForm.description.errorMessages"
-						bo-text="error"></label>
+						ng-bind-html="error"></label>
 				</div>
 			</div>
 			<!-- 	Homepage URL	 -->
@@ -117,7 +117,7 @@
 					<input ng-model="software.homepage" name="homepage" type="text" class="form-control"
 						placeholder="Homepage URL" validate-edit-resource-field>
 					<label class="help-block" ng-repeat="error in form.summaryForm.homepage.errorMessages"
-						bo-text="error"></label>
+						ng-bind-html="error"></label>
 				</div>
 			</div>
 			<!-- 	Version	 -->
@@ -143,7 +143,7 @@
 								</span>
 							</div>
 							<label class="help-block" ng-repeat="error in versionForm.version.errorMessages"
-								bo-text="error"></label>
+								ng-bind-html="error"></label>
 						</ng-form>
 					</div>
 					<div class="form-group" style="padding-top:7px;">

@@ -19,7 +19,7 @@
 								<span style="color:#ff0000;position: absolute; right: 5px;"><b>*</b></span></span></label>
 								<div class="col-sm-9">
 									<input ng-model="software.documentation[$index].url" type="text" class="form-control" placeholder="URL" name="url" validate-edit-resource-field index={{$index}}>
-									<label class="help-block" ng-repeat="error in documentationDetailForm.url.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in documentationDetailForm.url.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 							
@@ -30,7 +30,7 @@
 								<div class="col-sm-9">
 									<select class="form-control select-btn-group" ng-options="item.value as item.text for item in documentationTypeOptions" ng-model="software.documentation[$index].type" name="type" validate-edit-resource-field index={{$index}}>
 									</select>
-									<label class="help-block" ng-repeat="error in documentationDetailForm.type.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in documentationDetailForm.type.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div> -->
 
@@ -49,15 +49,15 @@
 													<button class="btn btn-default highlight-icon" type="button" ng-click="removeButtonClick('type', software.documentation[entryIndex], typeIndex)"><i class="fa fa-times remove-icon-button"></i> </button>
 												</span>
 											</div>
-											<label class="help-block" ng-repeat="error in registrationErrorPayload.documentation[entryIndex].type[typeIndex]" bo-text="error"></label>
+											<label class="help-block" ng-repeat="error in registrationErrorPayload.documentation[entryIndex].type[typeIndex]" ng-bind-html="error"></label>
 									</div>
-									<label class="help-block" ng-repeat="error in documentationDetailForm.documentation[entryIndex]" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in documentationDetailForm.documentation[entryIndex]" ng-bind-html="error"></label>
 									
 									<div class="form-group" style="padding-top:7px;">
 										<a href="" ng-click="addButtonClick('type', software.documentation[entryIndex], true, false);">Add documentation type</a>
 									</div>
 									<div ng-class="{'has-error': true};" ng-show="registrationErrorPayload.documentation[entryIndex].type[0]=='This field is required.'">
-										<label class="help-block" ng-repeat="error in registrationErrorPayload.documentation[entryIndex].type" bo-text="error"></label>
+										<label class="help-block" ng-repeat="error in registrationErrorPayload.documentation[entryIndex].type" ng-bind-html="error"></label>
 									</div>
 
 								</div>
@@ -69,14 +69,14 @@
 								<label class="col-sm-3 control-label"><span tooltips tooltip-side="right" tooltip-content="{{Attribute.description.documentationNote.description}}">Note <a target="_blank" href="http://biotools.readthedocs.io/en/latest/curators_guide.html#note-documentation"><i class="fa fa-question-circle fa" aria-hidden="true"></i></a></span></label>
 								<div class="col-sm-9">
 									<textarea ng-model="software.documentation[$index].note" name="note" class="form-control" rows="3" placeholder="Note about the documentation" validate-edit-resource-field index={{$index}}></textarea>
-									<label class="help-block" ng-repeat="error in documentationDetailForm.note.errorMessages" bo-text="error"></label>
+									<label class="help-block" ng-repeat="error in documentationDetailForm.note.errorMessages" ng-bind-html="error"></label>
 								</div>
 							</div>
 
 						</div>
 					</div>
 					<div ng-class="{'has-error': true};">
-						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in documentationForm.errorMessages" bo-text="error"></label>
+						<label class="help-block" style="margin-left: 20px;" ng-repeat="error in documentationForm.errorMessages" ng-bind-html="error"></label>
 					</div>
 				</ng-form>
 			</div>

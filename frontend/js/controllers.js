@@ -1064,7 +1064,7 @@ angular.module('elixir_front.controllers', [])
 
 
 }])
-.controller('ToolUpdateController', ['$scope', '$controller','$timeout','$state', '$stateParams', 'Tool', 'ToolUpdateLinterValidator', 'ToolUpdateValidator', 'Covid', 'CommunityCollection', '$q', function($scope, $controller, $timeout, $state, $stateParams, Tool, ToolUpdateLinterValidator, ToolUpdateValidator, Covid, CommunityCollection, $q) {
+.controller('ToolUpdateController', ['$scope', '$sce', '$controller','$timeout','$state', '$stateParams', 'Tool', 'ToolUpdateLinterValidator', 'ToolUpdateValidator', 'Covid', 'CommunityCollection', function($scope, $sce, $controller, $timeout, $state, $stateParams, Tool, ToolUpdateLinterValidator, ToolUpdateValidator, Covid, CommunityCollection) {
 	// inherit common controller
 	$controller('ToolEditController', {$scope: $scope});
 
