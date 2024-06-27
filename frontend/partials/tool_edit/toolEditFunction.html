@@ -314,7 +314,7 @@ Make botx text inputs look the sameish
 		<div class="col-sm-4 col-md-4 col-lg-4 text-center function-image-element" style="align-self:stretch;display:flex;justify-content: center;flex-direction: column;text-align: center; padding-right: 25px;">
 			<i class="fa fa-times remove-icon highlight-icon" ng-click="removeButtonClick('function', software, $index)"></i>
 
-			<textarea class="form-control" rows="2" style="font-size: 80%;resize: vertical;margin-top: 4px;" ng-model="function.note" placeholder="Note"></textarea>
+			<textarea class="form-control" rows="2" style="font-size: 80%;resize: vertical;margin-top: 4px;" ng-model="function.note" ng-model-options="{ updateOn: 'blur' }" placeholder="Note"></textarea>
 			<!-- <span><i ng-show="function.note" class="fa fa-question-circle" aria-hidden="true" style="font-size: 100%; margin-left: 0.5em;" tooltips tooltip-content="{{ ::function.note }}"></i></span> -->
 
 			<ul class="list-unstyled" style="margin-bottom:0px;">
@@ -331,7 +331,7 @@ Make botx text inputs look the sameish
 				</li>
 			</ul>
 			<!-- <textarea ng-model="software.function[$index].cmd" class="form-control" rows="2" placeholder="command, e.g. `meme sequence.s -dna`" validate-edit-resource-field></textarea> -->
-			<textarea class="fakecode" style="resize: vertical; margin-bottom: 4px;" ng-model="function.cmd"  class="form-control" rows="2" placeholder="Command"></textarea>
+			<textarea class="fakecode form-control" style="resize: vertical; margin-bottom: 4px;" ng-model="function.cmd"  rows="2" ng-model-options="{ updateOn: 'blur' }" placeholder="Command"></textarea>
 		</div>
 
 		<!-- Output -->
