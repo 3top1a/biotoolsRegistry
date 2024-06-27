@@ -26,7 +26,20 @@ RUN ln -sf /usr/bin/python3 /usr/bin/python && ln -sf /usr/bin/pip3 /usr/bin/pip
 
 
 RUN apt-get update && apt-get -y install apache2 apache2-utils ssl-cert libapache2-mod-wsgi-py3 && apt-get install -y python3-dev default-libmysqlclient-dev build-essential 
+RUN apt-get update && apt-get install -y \
+    libjpeg-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    liblcms2-dev \
+    libtiff5-dev \
+    libopenjp2-7 \
+    libturbojpeg0-dev \
+    libwebp-dev \
+    tcl8.6-dev \
+    tk8.6-dev && \
+    rm -rf /var/lib/apt/lists/*
 
+RUN pip install --force-reinstall 'setuptools<58.0.0'
 RUN pip install -r requirements.txt && rm -f requirements.txt
 
 COPY runtime/apache.conf /etc/apache2/sites-available/elixir.conf
