@@ -60,11 +60,8 @@ services:
     depends_on:
       - mysql
       - elasticsearch
-    links:
-      - mysql
-      - elasticsearch
     volumes:
-      - ./backend:/elixir/application/backend:consistent
+      - ./backend:/elixir/application/backend
       - ./frontend:/elixir/application/frontend
 
   # dockerfile in frontend dir
@@ -78,7 +75,7 @@ services:
     depends_on:
        - backend
     volumes:
-      - ./frontend:/home/biotools/frontend:consistent
+      - ./frontend:/home/biotools/frontend
       - biotools_node_modules:/home/biotools/frontend/node_modules
       - biotools_bower_components:/home/biotools/frontend/bower_components
 

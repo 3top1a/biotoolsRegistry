@@ -5,7 +5,7 @@ LABEL maintainer="Hans-Ioan Ienasescu <hans@bio.tools>"
 
 # Disable buffering for logs.
 ENV PYTHONUNBUFFERED 1
-ENV DEBIAN_FRONTEND="noninteractive"
+
 
 # Set up working directory and files.
 WORKDIR /elixir/application/backend
