@@ -54,7 +54,7 @@ gulp.task('scripts', function() {
 	.pipe(plumber())
 	.pipe(concat('app.js'))
 	.pipe(rename({suffix:'.min'}))
-	.pipe(uglify({ mangle: false }))
+	// .pipe(uglify({ mangle: false }))
 	.pipe(gulp.dest('dist'));
 });
 
