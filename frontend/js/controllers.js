@@ -311,26 +311,30 @@ angular.module('elixir_front.controllers', [])
 		  return null;
 	}
 
-	$scope.flattenObject = function (obj) {
+	$scope.flattenObject = function(obj) {
 		var result = [];
-
-		function recurse(current) {
-		  for (const key in current) {
-			if (current.hasOwnProperty(key)) {
-			  const value = current[key];
-			  result.push(value);
-	  
-			  if (typeof value === 'object' && value !== null) {
-				// If it's an object or array, recurse
-				recurse(value);
-			  }
+		var stack = [obj];
+		
+		while (stack.length > 0) {
+			var current = stack.pop();
+			
+			for (var key in current) {
+				if (current.hasOwnProperty(key)) {
+					var value = current[key];
+					
+					if (typeof value === 'object' && value !== null) {
+						// If it's an object or array, add it to the stack
+						stack.push(value);
+					} else {
+						// If it's a primitive value, add it to the result
+						result.push(value);
+					}
+				}
 			}
-		  }
 		}
-	  
-		recurse(obj);
+		
 		return result;
-	}
+	};	
 
 	$scope.recommend_terms = function(edam, type) {
 		// edam = currently edited operation
@@ -369,16 +373,18 @@ angular.module('elixir_front.controllers', [])
 				break;
 				case 'input':
 					// Check for duplicates
+					if (!edam_obj || !edam_obj.has_input) continue;
 					if (edam.hasOwnProperty('input')) {
 						for (let i2 = 0; i2 < edam.input.length; i2++) {
 							const input = edam.input[i2];
-							if (edam_obj.has_input.includes(input.data.uri)) append = false;
+							if (dam_obj.has_input.includes(input.data.uri)) append = false;
 						}
 					}
 					if (append)
 						suggestions = suggestions.concat(edam_obj.has_input)
 					break;
 				case 'output':
+					if (!edam_obj || !edam_obj.has_output) continue;
 					if (edam.hasOwnProperty('output')) {
 						for (let i2 = 0; i2 < edam.output.length; i2++) {
 							const output = edam.output[i2];
