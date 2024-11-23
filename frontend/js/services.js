@@ -23,6 +23,9 @@ angular.module('elixir_front.services', [])
 				return this.current.username;
 			}
 		},
+		isCurator: function () {
+			return this.current.is_curator;
+		},
 		isSuperuser: function () {
 			if (!_.isEmpty(this.current)) {
 				return this.current.is_superuser;
@@ -750,6 +753,9 @@ angular.module('elixir_front.services', [])
 			if (User.getUsername() == resource.owner) {
 				return true;
 			}
+
+			if (User.isCurator()) return true;
+
 			else if (resource.editPermission != undefined) {
 				if (resource.editPermission.type == "public") {
 					return true;

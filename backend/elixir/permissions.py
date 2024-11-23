@@ -64,6 +64,9 @@ class HasEditPermissionToEditResourceOrReadOnly(permissions.BasePermission):
 		if request.user.is_superuser:
 			return True
 
+		if request.user.groups.filter(name='Curators').exists():
+			return True
+
 		permissionType = obj.editPermission.type
 		authors = obj.editPermission.authors
 		if permissionType != None:

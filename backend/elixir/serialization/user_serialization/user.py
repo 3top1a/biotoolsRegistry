@@ -28,7 +28,8 @@ class UserRegisterSerializer(RegisterSerializer):
 # username list
 class UserNameSerializer(serializers.ModelSerializer):
 	username = serializers.CharField()
+	groups = serializers.StringRelatedField(many=True)
 
 	class Meta:
 		model = User
-		fields = ('username',)
+		fields = ('username', 'groups')

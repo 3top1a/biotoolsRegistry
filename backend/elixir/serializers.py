@@ -49,10 +49,12 @@ class UserSerializer(serializers.ModelSerializer):
 	sharedResources = serializers.SerializerMethodField('get_shared_resource')
 	# subdomains = serializers.SerializerMethodField()
 	requests_count = serializers.SerializerMethodField('get_resource_request_count')
+	is_curator = serializers.SerializerMethodField('get_is_curator')
+	groups = serializers.StringRelatedField(many=True)
 
 	class Meta:
 		model = User
-		fields = ('username', 'email', 'resources', 'sharedResources', 'is_superuser', 'requests_count')
+		fields = ('username', 'email', 'resources', 'sharedResources', 'is_superuser', 'requests_count', 'is_curator', 'groups')
 
 	def get_resource(self, user):
 		resources = Resource.objects.filter(visibility=1, owner=user)
@@ -69,10 +71,10 @@ class UserSerializer(serializers.ModelSerializer):
 			return ResourceRequest.objects.filter(completed=False).count()
 		return ResourceRequest.objects.filter(resource__owner=user, completed=False).count()
 
+	def get_is_curator(self, obj):
+		return obj.groups.filter(name='Curators').exists()
+
 	# def get_subdomains(self, user):
 	# 	subdomains = Domain.objects.filter(owner=user)
 	# 	serializer = SubdomainNameSerializer(instance=subdomains, many=True)
 	# 	return serializer.data
-		
-
-

@@ -1,7 +1,8 @@
 <!-- Divider line -->
 <div ng-controller="LoginMangerController as loginCtrl" class="pull-right default-controls-container">
 	<a ng-if="CheckUserEditingRights.canEdit(software)" ui-sref="tool.edit({id:software.biotoolsID})">
-		<button class="btn btn-default default-controls-button">Update this record ›</button>
+		<button ng-if="!User.isCurator()" class="btn btn-default default-controls-button">Update this record ›</button>
+		<button ng-if="User.isCurator()" class="btn btn-default default-controls-button">Update this record as curator ›</button>
 	</a>
 	<a ng-if="!CheckUserEditingRights.canEdit(software)">
 		<button ng-if="User.isLoggedIn()" class="btn btn-default default-controls-button" ng-click="requestEditing(software.biotoolsID)">Request editing rights ›</button>
